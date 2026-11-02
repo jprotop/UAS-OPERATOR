@@ -1,0 +1,223 @@
+<title>Drone Operator ID</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: a single centred credential card — hero registration number, bilingual label/value rows, status footer */
+  :root {
+    --bg: #eef1f5;
+    --card: #ffffff;
+    --ink: #10243b;
+    --muted: #5a6b7e;
+    --line: #d7dee7;
+    --accent: #0a4da2;      /* aviation / EU registry blue */
+    --accent-soft: #e7f0fb;
+    --ok: #0f7a4d;
+    --ok-soft: #e3f3ea;
+    --band: #0a2a4a;
+    --band-ink: #eaf1fa;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --sans: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1420;
+      --card: #121f30;
+      --ink: #e7eef6;
+      --muted: #9aacc0;
+      --line: #27384d;
+      --accent: #5fa0ee;
+      --accent-soft: #15283f;
+      --ok: #4fc58a;
+      --ok-soft: #13301f;
+      --band: #0a1927;
+      --band-ink: #dce8f5;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1420;
+    --card: #121f30;
+    --ink: #e7eef6;
+    --muted: #9aacc0;
+    --line: #27384d;
+    --accent: #5fa0ee;
+    --accent-soft: #15283f;
+    --ok: #4fc58a;
+    --ok-soft: #13301f;
+    --band: #0a1927;
+    --band-ink: #dce8f5;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100%;
+    padding-block: clamp(20px, 5vw, 56px);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 34px rgba(10, 42, 74, 0.14);
+  }
+
+  /* ---- Header band ---- */
+  .band {
+    background: var(--band);
+    color: var(--band-ink);
+    padding: 20px 24px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .crest {
+    flex: 0 0 auto;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border: 2px solid var(--band-ink);
+    border-radius: 50%;
+    font-size: 22px;
+  }
+  .band h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+  }
+  .band .sub {
+    margin: 2px 0 0;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9fc0e6;
+  }
+
+  /* ---- Registration number hero ---- */
+  .reg {
+    padding: 22px 24px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--accent-soft);
+  }
+  .reg .k {
+    margin: 0 0 6px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .reg .v {
+    font-family: var(--mono);
+    font-size: clamp(22px, 7vw, 30px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    word-break: break-all;
+  }
+
+  /* ---- Field rows ---- */
+  dl { margin: 0; padding: 6px 24px 8px; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: 0; }
+  dt {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  dt .en { color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
+  dd {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ---- Status + footer ---- */
+  .foot {
+    padding: 16px 24px 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border-top: 1px solid var(--line);
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--ok-soft);
+    color: var(--ok);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .status .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ok);
+  }
+  .note {
+    margin: 0;
+    font-size: 11px;
+    color: var(--muted);
+    max-width: 100%;
+  }
+</style>
+
+<main class="card">
+  <header class="band">
+    <div class="crest" aria-hidden="true">🛩️</div>
+    <div>
+      <h1>Μητρώο Εκμεταλλευόμενου ΣμηΕΑ</h1>
+      <p class="sub">UAS Operator Registration</p>
+    </div>
+  </header>
+
+  <section class="reg">
+    <p class="k">Αριθμός Εγγραφής · Registration No.</p>
+    <div class="v">GRC4ni0hrhdifnjb</div>
+  </section>
+
+  <dl>
+    <div class="row">
+      <dt>Εκμεταλλευόμενος <span class="en">· Operator</span></dt>
+      <dd>PROTOPAPPAS IOANNIS</dd>
+    </div>
+    <div class="row">
+      <dt>Διεύθυνση <span class="en">· Address</span></dt>
+      <dd>THIRAS 31, KERATSINI</dd>
+    </div>
+    <div class="row">
+      <dt>Ημ/νία Λήξης <span class="en">· Expiration Date</span></dt>
+      <dd>12/08/2031</dd>
+    </div>
+  </dl>
+
+  <footer class="foot">
+    <span class="status"><span class="dot"></span>Έγκυρη · Valid</span>
+    <p class="note">Στοιχεία εγγραφής εκμεταλλευόμενου μη επανδρωμένου αεροσκάφους (EASA / ΥΠΑ).</p>
+  </footer>
+</main>
